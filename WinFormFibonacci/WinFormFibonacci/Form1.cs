@@ -77,6 +77,10 @@ namespace WinFormFibonacci {
             {
                 Label lblNumber = GetLabelNumber(numbers[i].ToString(), i);
 
+                System.Threading.Thread.Sleep(1000);
+
+                this.Update();
+
                 Controls.Add(lblNumber);
                 gBoxFiboNumbers.Controls.Add(lblNumber);
             }
