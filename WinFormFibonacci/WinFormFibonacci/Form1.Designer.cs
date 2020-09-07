@@ -84,7 +84,7 @@
             this.btnShow.TabIndex = 3;
             this.btnShow.Text = "نمایش";
             this.btnShow.UseVisualStyleBackColor = true;
-            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
+            this.btnShow.Click += new System.EventHandler(this.BtnShow_Click);
             // 
             // FormFibonacci
             // 

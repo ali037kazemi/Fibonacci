@@ -11,6 +11,9 @@ using System.Windows.Forms;
 namespace WinFormFibonacci {
     public partial class FormFibonacci : Form {
 
+        /// <summary>
+        /// لیستس از رنگ های به کار رفته در نمایش اعداد که با استفاده از تابع رندوم یکی از این رنگ ها انتخاب میشود
+        /// </summary>
         private static readonly List<Color> colors = new List<Color>
         {
             Color.Red, Color.Black, Color.Blue, Color.Purple, Color.Pink, Color.Green,
@@ -23,21 +26,45 @@ namespace WinFormFibonacci {
             InitializeComponent();
         }
 
-        public List<int> GetFiboList(int n)
+        /// <summary>
+        /// لیستی از دنباله اعداد فیبوناچی تولید میکند به تعداد عدد ورودی
+        /// </summary>
+        /// <param name="n">تعداد اعداد دنباله فیبوناچی</param>
+        /// <returns>لیستی یا به عبارتی دنباله ای از اعداد فیبوناچی به ترتیب کوچک به بزرگ</returns>
+        private List<int> GetFiboList(int n)
         {
             List<int> numbers = new List<int>(n);
 
-            numbers.Add(1);
-            numbers.Add(1);
-            for (int i = 2; i < n; i++)
+            for (int i = 0; i < n; i++)
             {
-                numbers.Add(numbers[i - 2] + numbers[i - 1]);
+                numbers.Add(Fibonacci(i));
             }
 
             return numbers;
         }
 
-        public Label GetLabelNumber(string numberText, int numberNo)
+        /// <summary>
+        /// تابع بازگشتی فیبوناچی
+        /// </summary>
+        /// <param name="n">عدد nام دنباله فیبوناچی</param>
+        /// <returns></returns>
+        private int Fibonacci(int n)
+        {
+            if (n <= 1)
+            {
+                return 1;
+            }
+
+            return Fibonacci(n - 1) + Fibonacci(n - 2);
+        }
+
+        /// <summary>
+        /// یک کامپوننت برمیگرداند که اعداد دنباله فیبوناچی را به ترتیب نمایش میدهد
+        /// </summary>
+        /// <param name="numberText">متنی که نمایش داده میشود. یا درواقع همان عدد فیبوناچی</param>
+        /// <param name="numberNo">شماره ترتیب عدد در دنباله فیبوناچی</param>
+        /// <returns>لیستی از اعداد که دنباله فیبوناچی را تشکیل م می دهند به ترتیب سعودی</returns>
+        private Label GetLabelNumber(string numberText, int numberNo)
         {
             Label lblNumber = new Label();
 
@@ -65,7 +92,12 @@ namespace WinFormFibonacci {
             return lblNumber;
         }
 
-        private void btnShow_Click(object sender, EventArgs e)
+        /// <summary>
+        /// رویداد کلیلک بر روی دکمه نمایش
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnShow_Click(object sender, EventArgs e)
         {
             gBoxFiboNumbers.Controls.Clear();
 
