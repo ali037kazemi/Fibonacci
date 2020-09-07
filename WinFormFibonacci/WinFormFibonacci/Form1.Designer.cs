@@ -26,29 +26,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.gBoxFiboNumbers = new System.Windows.Forms.GroupBox();
+            this.txtInput = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.btnShow = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInput)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // gBoxFiboNumbers
             // 
-            this.groupBox1.Location = new System.Drawing.Point(234, 12);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.groupBox1.Size = new System.Drawing.Size(237, 411);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "اعداد فیبوناچی";
+            this.gBoxFiboNumbers.Location = new System.Drawing.Point(234, 12);
+            this.gBoxFiboNumbers.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.gBoxFiboNumbers.Name = "gBoxFiboNumbers";
+            this.gBoxFiboNumbers.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.gBoxFiboNumbers.Size = new System.Drawing.Size(237, 411);
+            this.gBoxFiboNumbers.TabIndex = 0;
+            this.gBoxFiboNumbers.TabStop = false;
+            this.gBoxFiboNumbers.Text = "اعداد فیبوناچی";
             // 
-            // numericUpDown1
+            // txtInput
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(12, 93);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(107, 23);
-            this.numericUpDown1.TabIndex = 1;
+            this.txtInput.Location = new System.Drawing.Point(12, 93);
+            this.txtInput.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.txtInput.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtInput.Name = "txtInput";
+            this.txtInput.Size = new System.Drawing.Size(107, 23);
+            this.txtInput.TabIndex = 1;
+            this.txtInput.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             // 
             // label1
             // 
@@ -60,20 +76,31 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "تعداد اعداد دنباله را وارد کنید:";
             // 
+            // btnShow
+            // 
+            this.btnShow.Location = new System.Drawing.Point(78, 154);
+            this.btnShow.Name = "btnShow";
+            this.btnShow.Size = new System.Drawing.Size(75, 23);
+            this.btnShow.TabIndex = 3;
+            this.btnShow.Text = "نمایش";
+            this.btnShow.UseVisualStyleBackColor = true;
+            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
+            // 
             // FormFibonacci
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 435);
+            this.Controls.Add(this.btnShow);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.txtInput);
+            this.Controls.Add(this.gBoxFiboNumbers);
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "FormFibonacci";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Text = "Fibonacci";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInput)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -81,9 +108,10 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.GroupBox gBoxFiboNumbers;
+        private System.Windows.Forms.NumericUpDown txtInput;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnShow;
     }
 }
 

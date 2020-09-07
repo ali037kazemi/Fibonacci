@@ -46,9 +46,40 @@ namespace WinFormFibonacci {
             int colorNumber = numberNo % colors.Count;
             lblNumber.ForeColor = colors[colorNumber];
 
-            lblNumber.Location = new Point(200, 200 + numberNo * 10);
+            lblNumber.Location = new Point(120, 30 + numberNo * 20);
+
+            lblNumber.AutoSize = true;
+            lblNumber.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+            if (lblNumber.Location.Y > gBoxFiboNumbers.Height)
+            {
+                gBoxFiboNumbers.Height += 20;
+                this.Height += 20;
+            }
+            else
+            {
+                gBoxFiboNumbers.Height = 411;
+                this.Height = 474;
+            }
 
             return lblNumber;
+        }
+
+        private void btnShow_Click(object sender, EventArgs e)
+        {
+            gBoxFiboNumbers.Controls.Clear();
+
+            int n = (int)txtInput.Value;
+
+            List<int> numbers = GetFiboList(n);
+
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                Label lblNumber = GetLabelNumber(numbers[i].ToString(), i);
+
+                Controls.Add(lblNumber);
+                gBoxFiboNumbers.Controls.Add(lblNumber);
+            }
         }
     }
 }
