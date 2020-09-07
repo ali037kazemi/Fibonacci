@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -70,13 +71,22 @@ namespace WinFormFibonacci {
 
             lblNumber.Text = numberText;
 
-            int colorNumber = numberNo % colors.Count;
-            lblNumber.ForeColor = colors[colorNumber];
+            //int colorNumber = numberNo % colors.Count;
+            //lblNumber.ForeColor = colors[colorNumber];
+            Color randomColor = Color.FromArgb(
+                    RandomHelper.Instance().Next(256),
+                    RandomHelper.Instance().Next(256),
+                    RandomHelper.Instance().Next(256)
+            );
+            lblNumber.ForeColor = randomColor;
+
 
             lblNumber.Location = new Point(120, 30 + numberNo * 20);
 
             lblNumber.AutoSize = true;
             lblNumber.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+            lblNumber.BorderStyle = BorderStyle.FixedSingle;
 
             if (lblNumber.Location.Y > gBoxFiboNumbers.Height)
             {
@@ -109,9 +119,9 @@ namespace WinFormFibonacci {
             {
                 Label lblNumber = GetLabelNumber(numbers[i].ToString(), i);
 
-                System.Threading.Thread.Sleep(1000);
-
                 this.Update();
+
+                System.Threading.Thread.Sleep(1000);
 
                 Controls.Add(lblNumber);
                 gBoxFiboNumbers.Controls.Add(lblNumber);
